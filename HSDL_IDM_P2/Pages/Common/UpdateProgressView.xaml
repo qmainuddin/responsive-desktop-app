@@ -1,0 +1,26 @@
+﻿<Window x:Class="HSDL_IDM_P2.Pages.Common.UpdateProgressView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HSDL_IDM_P2.Pages.Common"
+        mc:Ignorable="d" Title="IDM - Login" Height="150" Width="450"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="txtMessage" Text="Downloading update..." VerticalAlignment="Center" Margin="10,0" />
+
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" VerticalAlignment="Center" Minimum="0" Maximum="100"
+                     Grid.Row="1" Margin="10,0" Height="30"
+                     />
+
+        <Button x:Name="btnCancel" Grid.Row="2" Content="Cancel" VerticalAlignment="Center" HorizontalAlignment="Right"
+                Margin="0,0,10,2" Padding="10,0" Height="23" Click="btnCancel_Click"/>
+
+    </Grid>
+</Window>

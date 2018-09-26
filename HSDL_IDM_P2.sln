@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSDL_IDM_P2", "HSDL_IDM_P2\HSDL_IDM_P2.csproj", "{A788B066-90EF-4396-8795-073F79998681}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IDMSetup", "IDMSetup\IDMSetup.vdproj", "{19325803-5C75-4C1F-AD60-B072B9D0FA78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		CD_ROM|x64 = CD_ROM|x64
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		DVD-5|Any CPU = DVD-5|Any CPU
+		DVD-5|x64 = DVD-5|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		SingleImage|Any CPU = SingleImage|Any CPU
+		SingleImage|x64 = SingleImage|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A788B066-90EF-4396-8795-073F79998681}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.CD_ROM|x64.ActiveCfg = Release|x64
+		{A788B066-90EF-4396-8795-073F79998681}.CD_ROM|x64.Build.0 = Release|x64
+		{A788B066-90EF-4396-8795-073F79998681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.Debug|x64.ActiveCfg = Debug|x64
+		{A788B066-90EF-4396-8795-073F79998681}.Debug|x64.Build.0 = Debug|x64
+		{A788B066-90EF-4396-8795-073F79998681}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.DVD-5|x64.ActiveCfg = Debug|x64
+		{A788B066-90EF-4396-8795-073F79998681}.DVD-5|x64.Build.0 = Debug|x64
+		{A788B066-90EF-4396-8795-073F79998681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.Release|x64.ActiveCfg = Release|x64
+		{A788B066-90EF-4396-8795-073F79998681}.Release|x64.Build.0 = Release|x64
+		{A788B066-90EF-4396-8795-073F79998681}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{A788B066-90EF-4396-8795-073F79998681}.SingleImage|x64.ActiveCfg = Release|x64
+		{A788B066-90EF-4396-8795-073F79998681}.SingleImage|x64.Build.0 = Release|x64
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.CD_ROM|Any CPU.ActiveCfg = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.CD_ROM|x64.ActiveCfg = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.Debug|Any CPU.ActiveCfg = Debug
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.Debug|x64.ActiveCfg = Debug
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.DVD-5|Any CPU.ActiveCfg = Debug
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.DVD-5|x64.ActiveCfg = Debug
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.Release|Any CPU.ActiveCfg = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.Release|x64.ActiveCfg = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.Release|x64.Build.0 = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.SingleImage|Any CPU.ActiveCfg = Release
+		{19325803-5C75-4C1F-AD60-B072B9D0FA78}.SingleImage|x64.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

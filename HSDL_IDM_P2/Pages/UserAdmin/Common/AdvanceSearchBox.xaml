@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="HSDL_IDM_P2.Pages.UserAdmin.Common.AdvanceSearchBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HSDL_IDM_P2.Pages.UserAdmin.Common"
+             mc:Ignorable="d"
+             d:DesignHeight="700" d:DesignWidth="900">
+    <UserControl.Resources>
+        <Style x:Key="BasicButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SimpleLabel" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Lucida Sans"/>
+            <Setter Property="Foreground" Value="#FF666565"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF"/>
+    </UserControl.Resources>
+    <UserControl.Background>
+        <SolidColorBrush Color="WhiteSmoke" Opacity="0.7"/>
+    </UserControl.Background>
+    <Border Margin="51,0,120,0" VerticalAlignment="Top" Canvas.ZIndex="1">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="7" Direction="270" Color="LightGray" Opacity="1" BlurRadius="20"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Border.Style>
+        <StackPanel Orientation="Vertical" Background="White">
+            <Grid Margin="10,10,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="272*"/>
+                    <ColumnDefinition Width="281*"/>
+                    <ColumnDefinition Width="156*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0">
+                    <TextBlock x:Name="userID_lbl" Text="UserID" Style="{DynamicResource SimpleLabel}" 
+                               VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                    <TextBox DockPanel.Dock="Right" Height="30" MinWidth="180" Margin="10,0,0,0" />
+                </DockPanel>
+                <DockPanel Grid.Column="1" DockPanel.Dock="Right" Margin="10,0,0,0">
+                    <TextBlock x:Name="id_bl" Style="{DynamicResource SimpleLabel}" Text="Id" 
+                               VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox DockPanel.Dock="Right" Height="30" Margin="10,0,0,0" MinWidth="180"/>
+                </DockPanel>
+                <DockPanel Grid.Column="2" DockPanel.Dock="Right" Margin="10,0,0,0">
+                    <TextBlock x:Name="LblUserType" Style="{DynamicResource SimpleLabel}" Text="User Type" 
+                               VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <ComboBox DockPanel.Dock="Right" Margin="10,0,0,0"/>
+                </DockPanel>
+            </Grid>
+            <Grid Margin="10,10,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0">
+                    <TextBlock DockPanel.Dock="Top" x:Name="Details_label" Text="Details" 
+                               Foreground="#FF32A3CF" FontWeight="Bold" FontFamily="Lucida Sans" FontSize="14"/>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,3,0,0">
+                        <Line Stroke="Black" StrokeDashArray="2 2" X2="{Binding ActualWidth, Mode=OneWay, 
+                            RelativeSource={RelativeSource FindAncestor,
+                            AncestorType={x:Type DockPanel}}}"/>
+                    </StackPanel>
+                </DockPanel>
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <TextBlock x:Name="lbl_firstName" Text="First Name" Style="{DynamicResource SimpleLabel}" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBox DockPanel.Dock="Right" Height="30" MinWidth="150" Margin="10,0,0,0" />
+                    </DockPanel>
+                    <DockPanel Grid.Column="1" DockPanel.Dock="Right" Margin="10,0,0,0">
+                        <TextBlock x:Name="lbl_middleName" Text="Middle Name" Style="{DynamicResource SimpleLabel}" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBox DockPanel.Dock="Right" Height="30" MinWidth="125" Margin="10,0,0,0" />
+                    </DockPanel>
+                    <DockPanel Grid.Column="2" DockPanel.Dock="Right" Margin="10,0,0,0">
+                        <TextBlock x:Name="lbl_lastName" Text="Last Name" Style="{DynamicResource SimpleLabel}" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBox DockPanel.Dock="Right" Height="30" MinWidth="125" Margin="10,0,0,0" />
+                    </DockPanel>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,10,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0">
+                    <TextBlock DockPanel.Dock="Top" x:Name="lbl_other" Text="Other" 
+                               Foreground="#FF32A3CF" FontWeight="Bold" FontFamily="Lucida Sans" FontSize="14"/>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,3,0,0">
+                        <Line Stroke="Black" StrokeDashArray="2 2" X2="{Binding ActualWidth, Mode=OneWay, 
+                            RelativeSource={RelativeSource FindAncestor,
+                            AncestorType={x:Type DockPanel}}}"/>
+                    </StackPanel>
+                </DockPanel>
+                <Grid Grid.Row="1" Margin="0,10,0,0" HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="144*"/>
+                        <ColumnDefinition Width="291*"/>
+                        <ColumnDefinition Width="274*"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <TextBlock x:Name="lbl_status" Text="Status" Style="{DynamicResource SimpleLabel}" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <ComboBox DockPanel.Dock="Right" Margin="10,0,0,0"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="1" DockPanel.Dock="Right" Margin="20,0,0,0">
+                        <TextBlock x:Name="email_lbl" Text="Email" Style="{DynamicResource SimpleLabel}" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBox DockPanel.Dock="Right" Height="30" MinWidth="180" Margin="10,0,0,0" />
+                    </DockPanel>
+                    <DockPanel Grid.Column="2" DockPanel.Dock="Right" Margin="20,0,0,0">
+                        <TextBlock VerticalAlignment="Center" x:Name="telephone_lbl" Text="Telephone" Style="{DynamicResource SimpleLabel}" 
+                                   HorizontalAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBox DockPanel.Dock="Right" Height="30" MinWidth="180" Margin="10,0,0,0" />
+                    </DockPanel>
+                </Grid>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="1,20,1,0">
+                <Line Stroke="Gray" StrokeThickness="1" X2="{Binding ActualWidth, Mode=OneWay, 
+                            RelativeSource={RelativeSource FindAncestor,
+                            AncestorType={x:Type StackPanel}}}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,10">
+                <Button x:Name="close_btn" HorizontalContentAlignment="Center" 
+                            Style="{StaticResource BasicButton}" 
+                            VerticalContentAlignment="Center" Width="78" 
+                            Foreground="#FF666565" Height="33" 
+                            BorderBrush="#FFE0D3D3" 
+                            MouseEnter="OnHover_btn_close" Margin="0,0,5,0" MouseLeave="OnLeave_btn_close" Click="OnClick_btn_Close">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFF1ECEC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel  x:Name="close_stackPanel" Orientation="Horizontal">
+                        <Image x:Name="close_image" HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" 
+                                   Source="{DynamicResource close_img_nonHover}" Height="18" 
+                                   Width="19.5" 
+                                   OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" 
+                                   Stretch="None" />
+                        <Label x:Name="user_close_lbl" Content="Close" 
+                                   Background="{x:Null}" VerticalAlignment="Top" 
+                                   FontFamily="Lucida Sans" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource BasicButton}" x:Name="reset_btn" 
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                        Width="78" Foreground="#FF666565" Height="33" 
+                        BorderBrush="#FFE0D3D3" MouseEnter="OnHover_btn_clear" 
+                        MouseLeave="OnLeave_btn_clear" Click="reset_btn_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFF1ECEC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel x:Name="reset_stackPanel" Orientation="Horizontal">
+                        <Image x:Name="reset_image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource clear_img_nonHover}" Height="18" Width="19.5" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Stretch="None" />
+                        <Label x:Name="user_reset_lbl" Content="Clear" Background="{x:Null}" FontFamily="Lucida Sans" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource BasicButton}" x:Name="search_btn"
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center" Width="86" 
+                            Foreground="#FF666565" Height="33" 
+                            BorderBrush="#FFE0D3D3" 
+                            MouseEnter="OnHover_btn_search" 
+                            MouseLeave="OnLeave_btn_search" Click="search_btn_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFF1ECEC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel x:Name="search_stackPanel" Orientation="Horizontal" Width="78">
+                        <Image x:Name="search_image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource search_img_nonHover}" Height="18" Width="19.5" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Stretch="None" />
+                        <Label x:Name="user_search_lbl" Content="Search" Background="{x:Null}" FontFamily="Lucida Sans" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</UserControl>

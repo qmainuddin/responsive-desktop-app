@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="HSDL_IDM_P2.Pages.UserAdmin.Common.UserRightContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HSDL_IDM_P2.Pages.UserAdmin.Common"
+             mc:Ignorable="d" BorderBrush="#FF8D8B8B" 
+             d:DesignHeight="300" BorderThickness="1"
+             d:DesignWidth="300" Margin="0,5,0,0">
+    <StackPanel Orientation="Vertical">
+        <!--<Separator BorderBrush="#FF8D8B8B" BorderThickness="1"/>-->
+        <StackPanel Name="userAccessControlHeader" Background="#f2f2f2" Height="21"
+                    Orientation="Horizontal" PreviewMouseDown="userAccessControlHeader_PreviewMouseDown">
+            <Image Name="caretImg" Stretch="UniformToFill" Source="/Resources/caret_left.gif" VerticalAlignment="Center" Height="7" Margin="5,2,0,0"/>
+            <TextBlock Name="LblUserAccessControlHeaderName" Foreground="#212121"  Text="" VerticalAlignment="Center" Height="14"></TextBlock>
+        </StackPanel>
+        <Separator Name="headerSperator" BorderBrush="#FF8D8B8B" BorderThickness="1"/>
+        <ScrollViewer Visibility="Hidden" VerticalScrollBarVisibility="Auto" 
+                      Name="userAccessControlScroller" Height="242">
+            <StackPanel  Name="userAccessControlConent"
+                    Orientation="Vertical" 
+                    Margin="5,0,0,0">
+                <!--<DockPanel>
+                <StackPanel DockPanel.Dock="Top" x:Name="topContent"
+                         Margin="2,3,0,0" Orientation="Horizontal">
+                    <CheckBox x:Name="userAccessControlCheckBox" 
+                      HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                      VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                      Click="userAccessControlCheckBox_Click" />
+                    <Image x:Name="ImageExpand" Source="/IDM_HSDL;component/Resources/plus.png" 
+                   RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="5,0,0,0" 
+                   Height="13" Width="13" Stretch="UniformToFill" PreviewMouseDown="BtnExpand_Click"/>
+                    <TextBlock x:Name="userAccessControlNameTxt" VerticalAlignment="Top" 
+                       Height="15" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Name="StackPanelUserAccessControlDescription" 
+                            Visibility="Visible" Orientation="Horizontal" Margin="21,3,3,5">
+                    <TextBlock Name="LblUserAccessControlDescription" VerticalAlignment="Top"
+                           Text=""></TextBlock>
+                </StackPanel>
+            </DockPanel>-->
+            </StackPanel>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

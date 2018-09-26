@@ -1,0 +1,206 @@
+﻿<UserControl x:Class="HSDL_IDM_P2.Pages.UserAdmin.UserHome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HSDL_IDM_P2.Pages.UserAdmin"
+             xmlns:CommonUser="clr-namespace:HSDL_IDM_P2.Pages.UserAdmin.Common"
+             xmlns:CommonAll="clr-namespace:HSDL_IDM_P2.Pages.Common"
+             mc:Ignorable="d" x:Name="UserAdminRoot"
+             d:DesignHeight="300" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="BasicSmallButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="0,1,0,1"
+                            Padding="4,2" 
+                            BorderBrush="#a0a0a0" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#a0a0a0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BasicButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="DarkGray" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataGridTemplateColumn x:Key="DGTemplateActionColumn" Header="Action">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2">
+                        <Button Name="BtnUpdate" Width="25" Height="25" Margin="2,0,0,0" 
+                                ToolTip="Update" Click="DGTemplateEdit_Click" 
+                                Background="Transparent" BorderBrush="Transparent" Loaded="BtnEdit_Loaded" >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value=".5"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="True">
+                                            <Setter Property="Opacity" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Image x:Name="view_image" 
+                                   Source="/Resources/ico_edit.png"
+                                   OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" 
+                                   Stretch="UniformToFill" />
+                        </Button>
+                        <Button Name="BtnView" Width="25" Height="25" Margin="2,0,0,0" 
+                                Background="Transparent" BorderBrush="Transparent" 
+                                ToolTip="View" Click="DGTemplateView_Click" Loaded="BtnView_Loaded">
+                            <Image x:Name="edit_image" 
+                                   Source="/Resources/ico_view.png"
+                                   OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" 
+                                   Stretch="UniformToFill" />
+                        </Button>
+                        <Button Name="BtnDelete" Width="25" Height="25" Margin="2,0,0,0"
+                                Background="Transparent" BorderBrush="Transparent" 
+                                ToolTip="Delete" Click="DGTemplateDelete_Click" Loaded="BtnDelete_Loaded">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value=".5"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="True">
+                                            <Setter Property="Opacity" Value="1"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Image x:Name="delete_image"
+                                   Source="/Resources/ico_delete.png" 
+                                   OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" 
+                                   Stretch="UniformToFill" />
+                        </Button>
+                        <!--<TextBlock Text="" VerticalAlignment="Top" />-->
+                    </StackPanel>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn x:Key="DGTemplateCheckboxColumn">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <CheckBox IsChecked="False" Click="CheckBox_Click" ></CheckBox>
+                    </StackPanel>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+    </UserControl.Resources>
+    <DockPanel >
+        <Grid Name="QuickSearchPanel" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="51,0,81,0">
+            <TextBox x:Name="textBox_search" Style="{StaticResource placeHolder}"
+                 Tag="Search by UserID or First Name or Last Name or Email or Telephone or Gender" 
+                 TextWrapping="Wrap" Foreground="#FFD4CECE" 
+                 FontSize="16" BorderThickness="1,1,1,1" MaxLength="100" Margin="0,0,71,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="71">
+                <Button Style="{DynamicResource BasicSmallButton}" Width="32"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" 
+                Cursor="Hand" ToolTip="Advance Search" BorderThickness="1"
+                BorderBrush="Transparent" VerticalContentAlignment="Center" Click="OnClickAdvanceSearch">
+                    <Button.Content>
+                        <Image Source="/HSDL_IDM_P2;component/Resources/caret_down.gif" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Stretch="None" />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btn_search" Style="{DynamicResource BasicSmallButton}" Background="#FF32A3D0"
+                BorderBrush="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderThickness="1"
+                ToolTip="Search" Cursor="Hand" Width="39">
+                    <Button.Content>
+                        <Image x:Name="b_search_image" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       Source="/Resources/b_search.png"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <CommonAll:PagingControl x:Name="paging" Margin="0,10,0,55" />
+            <Grid x:Name="DataGridContainer" Margin="0,40,0,92">
+                <DataGrid x:Name="table_dataGrid"
+                      AlternationCount="2"  HeadersVisibility="Column" Background="Transparent" 
+                      BorderThickness="0" CanUserAddRows="False" IsReadOnly="True" ColumnWidth="*"
+                      EnableRowVirtualization="False" AutoGeneratingColumn="dataGridView_AutoGeneratingColumn" 
+                      Sorting="DataGrid_Sorting" LayoutUpdated="dataGrid_LayoutUpdated" HorizontalAlignment="Left"
+                      Height="{Binding Path=ActualHeight, ElementName=DataGridContainer}" 
+                      Width="{Binding Path=ActualWidth, ElementName=DataGridContainer}"
+                      CopyingRowClipboardContent="DataGrid_CopyingRowClipboardContent"></DataGrid>
+            </Grid>
+            <StackPanel Name="footerPanel" Orientation="Horizontal" VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right" Margin="0,0,0,10">
+                <Button Style="{StaticResource BasicButton}" x:Name="btn_create"
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center" Width="86" 
+                            Foreground="#FF666565" Height="33" 
+                            BorderBrush="#FFE0D3D3"
+                            MouseEnter="OnHover_btn_create" 
+                            MouseLeave="OnLeave_btn_create" Click="OnClick_Create">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFF1ECEC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel x:Name="create_stackPanel" Orientation="Horizontal" Width="78">
+                        <Image x:Name="create_image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource create_img_nonHover}" Width="19.5" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Stretch="None" />
+                        <Label x:Name="user_create_lbl" Content="Create" Background="{x:Null}" FontFamily="Lucida Sans" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource BasicButton}" x:Name="BtnExport"
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center" Width="86" 
+                            Foreground="#FF666565" Height="33"
+                            BorderBrush="#FFE0D3D3" Margin="5,0,0,0"
+                            MouseEnter="OnHover_btn_export" 
+                            MouseLeave="OnLeave_btn_export" Click="OnClick_Export">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FFF1ECEC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel x:Name="export_stackPanel" Orientation="Horizontal" Width="78">
+                        <Image x:Name="export_image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource export_img_nonHover}" Width="19.5" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Stretch="None" />
+                        <Label x:Name="user_export_lbl" Content="Export" Background="{x:Null}" FontFamily="Lucida Sans" FontSize="14"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <CommonUser:AdvanceSearchBox ParentControl="{Binding ElementName=UserAdminRoot}" x:Name="AdvanceSearchBox" Visibility="Hidden"/>
+        </Grid>
+    </DockPanel>
+</UserControl>
