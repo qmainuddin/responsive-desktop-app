@@ -71,7 +71,8 @@ namespace HSDL_IDM_P2.Pages.Common
             //    uiThreadWorker.RunWorkerAsync();
             //}
             //DoSomething();
-            new MainWindow().Show();
+            //new MainWindow().Show();
+            new Test.TestPage().Show();
             this.RootPage.Close();
         }
 

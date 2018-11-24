@@ -145,8 +145,11 @@
     </Compile>
     <Compile Include="Pages\People.cs" />
     <Compile Include="Pages\Person.cs" />
-    <Compile Include="Pages\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
+    <Compile Include="Pages\Test\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Test\TestUserHome.xaml.cs">
+      <DependentUpon>TestUserHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserAdmin\Common\AdvanceSearchBox.xaml.cs">
       <DependentUpon>AdvanceSearchBox.xaml</DependentUpon>
@@ -231,7 +234,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Test.xaml">
+    <Page Include="Pages\Test\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Test\TestUserHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
